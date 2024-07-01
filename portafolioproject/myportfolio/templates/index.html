@@ -1,0 +1,388 @@
+{% load static %} {% load bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Normalize -->
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}" />
+    <!-- Font Marmeland -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Marmelad&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- bootstrap 5 -->
+    {% bootstrap_css %}
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <!-- JQuery y validación -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+
+    <script
+      src="https://kit.fontawesome.com/98b7a38728.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Portafolio Jonathan Huala</title>
+    <link rel="Website icon" type="png" href="../static/img/logoblanco.png" />
+  </head>
+  <body data-bs-spy="scroll">
+    <!-- Aclaración = Eliminé el data-bs-target="#navbar" del body ya que al presionar una vez el botón en dispositivos móviles se eliminaba la navbar,
+al eliminarlo no ocurre ese problema, puede que no sea la mejor decisión pero no sabía como arreglarlo -->
+
+    <!-- Barra de navegación -->
+    <header>
+      <nav class="navbar navbar-expand-lg menu fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="./">
+            <img
+              class="imagen_logo"
+              src="{% static 'img/Logo3.0negro.png' %}"
+              width="180"
+              height="70"
+              alt="Logotipo"
+            />
+          </a>
+          <button
+            class="navbar-toggler d-flex d-lg-none flex-column justify-content-around"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbar"
+            aria-controls="navbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="toggler-icon top-bar"></span>
+            <span class="toggler-icon middle-bar"></span>
+            <span class="toggler-icon bottom-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a
+                  class="nav-link px-4 fw-bold menu_items"
+                  aria-current="page"
+                  href="#inicio"
+                  >Inicio</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-4 fw-bold menu_items"
+                  aria-current="page"
+                  href="#sobre_mi"
+                  >Conóceme</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-4 fw-bold menu_items"
+                  aria-current="page"
+                  href="#proyects"
+                  >Portafolio</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-4 fw-bold menu_items"
+                  aria-current="page"
+                  href="#certificados"
+                  >Certificados</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-4 fw-bold menu_items"
+                  aria-current="page"
+                  href="#contact"
+                  >Contacto</a
+                >
+              </li>
+              <li class="nav-item">
+                {% if user.is_authenticated %}
+                <a
+                  class="nav-link px-4 fw-bold menu_items"
+                  href="{% url 'admin:logout' %}"
+                >
+                  <i
+                    class="fa-solid fa-right-from-bracket"
+                    style="color: #000000"
+                  ></i>
+                </a>
+                {% else %}
+                <a
+                  class="nav-link px-4 fw-bold menu_items"
+                  href="{% url 'login' %}"
+                >
+                  <i class="fa-solid fa-user" style="color: #000000"></i>
+                </a>
+                {% endif %}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Imagen de fondo y sección de bienvenida -->
+    <aside class="img_bienvenida" id="inicio">
+      <div class="fondo_bienvenida">
+        <h1 class="text-white fw-bold txt_bienvenida">
+          Bienvenido <br />
+          Mi nombre es <br />
+          Jonathan Huala
+        </h1>
+      </div>
+    </aside>
+
+    <!-- Sobre mí, sección con información personal -->
+    <div class="fondo-color container-fluid" id="sobre_mi">
+      <div class="row align-items-center cuadro shadow">
+        <div class="col-sm-12 col-md-5 col-lg-4 foto_sm">
+          <img
+            class="img_sm img-fluid"
+            src="{% static 'img/fotoSM.jpeg' %}"
+            alt="Sobre mi foto"
+          />
+        </div>
+        <div class="col-sm-12 col-md-7 col-lg-8 text-white texto_sm">
+          <h1 class="texto_sm_titulo fw-bold">Sobre mí</h1>
+          <p class="desc_sm">
+            Hola, soy Jonathan Huala, el 2019 entré a la UCT en ingeniería civil
+            en informática estuve 2 años y me transladé al DUOC Puerto Montt
+            causa de la pandemia. Me encuentro en mi 3er año en ingeniería en
+            informática, me gusta aprender cosas nuevas de mi carrera y tengo
+            altas expectativas en los proyectos que me gustarían realizar.
+            <br />
+            Mi mayor fuerte es la programación, ya que el diseño no se me da
+            mucho, aunque me guste necesito una mirada más experimentada para
+            poder crear algo bueno, he ocupado JAVA, Python, HTML, CSS, SQL y
+            estoy aprendiendo JavaScript, también he tenido un leve acercamiento
+            con PHP y he ocupado RobotBasic.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proyectos Section -->
+
+    <section id="proyects" class="py-5 fondo_portafolio">
+      <div class="container">
+        <h2 class="text-center fw-bold text-white titulo_portafolio">
+          Mis Proyectos
+        </h2>
+        <div class="row">
+          {% for proyecto in proyectos %}
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 cartas">
+              <img
+                src="{{ proyecto.imagen.url }}"
+                class="card-img-top imagen_proyectos"
+                alt="{{ proyecto.titulo }}"
+              />
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title titulo_carta">{{ proyecto.titulo }}</h5>
+                <p class="card-text desc_carta">{{ proyecto.descripcion }}</p>
+                <div class="mt-auto">
+                  <a
+                    href="{{ proyecto.link_sitio }}"
+                    class="btn boton_icon"
+                    target="_blank"
+                    ><i class="fa-regular fa-eye" style="color: #ffffff"></i
+                  ></a>
+                  <a
+                    href="{{ proyecto.link_repositorio }}"
+                    class="btn boton_icon"
+                    target="_blank"
+                    ><i class="fa-brands fa-github" style="color: #ffffff"></i
+                  ></a>
+                  <a
+                    href="{% url 'proyecto_detalle' proyecto.pk %}"
+                    class="btn boton_icon"
+                    ><i
+                      class="fa-solid fa-circle-info"
+                      style="color: #ffffff"
+                    ></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificados, sección con certificados completados o en pendientes -->
+    <div
+      class="container-fluid text-white text-center fondo_certificados"
+      id="certificados"
+    >
+      <h1 class="fw-bold">Certificados</h1>
+      <div class="certificados_completados row">
+        <div class="col-auto estado_txt">
+          <h2>Completados</h2>
+        </div>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-6 mb-3">
+              <div class="certificado_caja shadow">
+                <h4>
+                  Certificado de análisis y planificación de requerimientos
+                  informáticos
+                </h4>
+              </div>
+              <div class="progress">
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated custom-color"
+                  role="progressbar"
+                  style="width: 100%"
+                  aria-valuenow="25"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6 mb-3">
+              <div class="certificado_caja shadow">
+                <h4>
+                  Certificado de análisis y desarrollo de modelos de datos
+                </h4>
+              </div>
+              <div class="progress">
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated custom-color"
+                  role="progressbar"
+                  style="width: 100%"
+                  aria-valuenow="25"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="certificados_pendientes row">
+        <div class="col-auto estado_txt shadow-sm">
+          <h2>Pendientes</h2>
+        </div>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-6 mb-3">
+              <div class="certificado_caja shadow">
+                <h4>Certificado internacional en inglés intermedio alto</h4>
+              </div>
+              <div class="progress">
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated custom-color"
+                  role="progressbar"
+                  style="width: 90%"
+                  aria-valuenow="25"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6 mb-3">
+              <div class="certificado_caja shadow">
+                <h4>Certificado de programación de software</h4>
+              </div>
+              <div class="progress">
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated custom-color"
+                  role="progressbar"
+                  style="width: 62.5%"
+                  aria-valuenow="25"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contacto, sección con información de contacto donde se envía un correo al contacto -->
+
+    <section id="contact" class="py-5 contact">
+      <div class="container text-white">
+        <h2 class="text-center fw-bold textocontacto">Contáctame</h2>
+        <form
+          method="POST"
+          action="{% url 'contacto_nuevo' %}"
+          id="contactForm"
+          class="needs-validation"
+          novalidate
+        >
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="id_nombre" class="form-label">Nombre</label>
+            <input
+              type="text"
+              class="form-control campo_contacto"
+              id="id_nombre"
+              name="nombre"
+              required
+            />
+            <div class="invalid-feedback">Por favor ingresa un nombre.</div>
+          </div>
+          <div class="mb-3">
+            <label for="id_email" class="form-label">Correo</label>
+            <input
+              type="email"
+              class="form-control campo_contacto"
+              id="id_email"
+              name="email"
+              required
+            />
+            <div class="invalid-feedback">Por favor ingresa un correo.</div>
+          </div>
+          <div class="mb-3">
+            <label for="id_mensaje" class="form-label">Mensaje</label>
+            <textarea
+              class="form-control campo_contacto"
+              id="id_mensaje"
+              name="mensaje"
+              rows="3"
+              required
+            ></textarea>
+            <div class="invalid-feedback">Por favor ingresa un mensaje.</div>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn boton_contacto">Enviar</button>
+          </div>
+        </form>
+        <div id="formAlert" class="alert mt-3 d-none" role="alert"></div>
+      </div>
+    </section>
+
+    <!-- Pié de página, sección con información sobre el pié de página -->
+    <footer class="fondo_pie_pagina container-fluid">
+      <div>
+        <img
+          class="pie_pag_foto"
+          src="{% static 'img/Logo3.0Blanco.png' %}"
+          alt="logo"
+        />
+      </div>
+      <div>
+        <p class="text-white pie_pag_texto">
+          ©Copyright 2024. Jonathan Huala. <br />
+          Todos los derechos reservados
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap 5 -->
+    {% bootstrap_javascript %}
+    <!-- JS -->
+    <script src="{% static 'js/scripts.js'%}"></script>
+  </body>
+</html>

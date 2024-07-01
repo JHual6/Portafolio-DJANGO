@@ -1,0 +1,12 @@
+{% extends 'base_generic.html' %} {% block content %}
+
+<div class="nuevo_contactos container mt-5">
+  <h2 class="contacta_titulo">Contacta con nosotros</h2>
+  <form method="POST" class="needs-validation" novalidate>
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit" class="btn boton_contactar">Enviar</button>
+    <a href="{% url 'home' %}" class="btn boton_contactar mx-2">Volver</a>
+  </form>
+</div>
+
+{% endblock %}

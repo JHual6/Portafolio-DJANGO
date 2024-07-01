@@ -1,0 +1,26 @@
+{% extends 'base_generic.html' %} {% block content %}
+
+<div class="container mt-5 detalle_contacto">
+  <h2 class="py-2 fw-bold">Detalle del contacto</h2>
+  <p><strong>Nombre: </strong>{{ contacto.nombre }}</p>
+  <p><strong>Email: </strong>{{ contacto.email }}</p>
+  <p><strong>Mensaje: </strong>{{ contacto.mensaje }}</p>
+  <a href="{% url 'contacto_editar' contacto.pk %}" class="btn boton_detalle"
+    ><i class="fa-solid fa-pen-to-square"></i
+  ></a>
+  <form
+    method="POST"
+    action="{% url 'contacto_eliminar' contacto.pk %}"
+    style="display: inline"
+  >
+    {% csrf_token %}
+    <button type="submit" class="btn boton_detalle">
+      <i class="fa-solid fa-eraser"></i>
+    </button>
+  </form>
+  <a href="{% url 'contacto_lista' %}" class="btn boton_detalle"
+    ><i class="fa-solid fa-chevron-left"></i
+  ></a>
+</div>
+
+{% endblock %}

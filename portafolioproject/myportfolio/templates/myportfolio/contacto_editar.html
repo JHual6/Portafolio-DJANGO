@@ -1,0 +1,12 @@
+{% extends 'base_generic.html' %} {% block content %}
+
+<div class="container mt-5 editar_contacto">
+  <h2 class="py-2">Editar contacto</h2>
+  <form method="POST" class="needs-validation" novalidate>
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit" class="btn boton_editar">Guardar</button>
+    <a href="{% url 'contacto_lista' %}" class="btn boton_editar">Cancelar</a>
+  </form>
+</div>
+
+{% endblock %}

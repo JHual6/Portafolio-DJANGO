@@ -1,0 +1,50 @@
+{% extends 'base_generic.html' %} {% block content %}
+<div class="container mt-5 lista_contactos">
+  <h2 class="text-center mb-4 fw-bold titulo_contactos">Contactos Recibidos</h2>
+  <div class="table-responsive">
+    <table class="table table-hover align-middle tabla_contactos">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Email</th>
+          <th scope="col" class="w-25">Mensaje</th>
+          <th scope="col" class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for contacto in contactos %}
+        <tr>
+          <td class="col-3">{{ contacto.nombre }}</td>
+          <td class="col-3">{{ contacto.email }}</td>
+          <td class="col-4 text-break">{{ contacto.mensaje }}</td>
+          <td class="col-2 text-center">
+            <a
+              href="{% url 'contacto_detalle' contacto.pk %}"
+              class="btn boton_lista m-1"
+            >
+              <i class="fa-solid fa-eye"></i>
+            </a>
+            <a
+              href="{% url 'contacto_editar' contacto.pk %}"
+              class="btn boton_lista m-1"
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </a>
+            <form
+              method="POST"
+              action="{% url 'contacto_eliminar' contacto.pk %}"
+              style="display: inline"
+            >
+              {% csrf_token %}
+              <button class="btn boton_lista m-1">
+                <i class="fa-solid fa-eraser"></i>
+              </button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

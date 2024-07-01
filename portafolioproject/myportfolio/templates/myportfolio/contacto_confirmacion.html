@@ -1,0 +1,14 @@
+{% extends 'base_generic.html' %} {% block content %}
+
+<div class="container mt-5 confirmacion_contacto">
+  <h2>Mensaje enviado</h2>
+  <p>Te contactaremos</p>
+</div>
+
+<script>
+  setTimeout(function () {
+    window.location.href = "{% url 'home' %}";
+  }, 2000); // Redirige después de 5000 milisegundos (5 segundos)
+</script>
+
+{% endblock %}
